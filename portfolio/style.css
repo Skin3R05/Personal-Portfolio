@@ -70,13 +70,20 @@ body {
 }
 
 .btn {
+    width: 170px;
     margin-top: 20px;
     padding: 12px 25px;
-    background: #0d1117;
+    background: #58a6ff;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
     color: #e6edf3;
+    text-align: center;
+    box-shadow: 0 1px 3px 0;
+    transition: transform 0.3s ease;
+}
+.btn:hover {
+    transform: translateY(-2px);
 }
 
 /* Sections */
@@ -117,6 +124,10 @@ body {
     color: #0d1117;
     border-radius: 6px;
     text-decoration: none;
+    transition: transform 0.3s ease;
+}
+.btn-sm:hover {
+    transform: translateY(-2px);
 }
 
 /* Contact Form */
