@@ -33,20 +33,48 @@
   });
 })();
 
-/* CONTACT FORM handler (demo) */
-function handleContactSubmit(e) {
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
+/* CONTACT FORM — functional + professional alert */
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-  if (!name || !email || !message) {
-    alert('Please complete all fields.');
-    return false;
-  }
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-  // demo feedback will replace with real backend or email service
-  alert(`Thanks ${name}! Your message was received.`);
-  e.target.reset();
-  return false;
-}
+    // check empty fields
+    if (!name || !email || !message) {
+        Swal.fire({
+            title: "Incomplete Form",
+            text: "Please fill in all fields.",
+            icon: "warning",
+            confirmButtonText: "Okay"
+        });
+        return;
+    }
+
+    const params = { name, email, message };
+
+    emailjs
+        .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+        .then(() => {
+            Swal.fire({
+                title: "Message Sent!",
+                text: "Thank you for contacting me. I will reply shortly.",
+                icon: "success",
+                confirmButtonText: "Okay"
+            });
+
+            e.target.reset();
+        })
+        .catch((err) => {
+            console.error("EmailJS error:", err);
+            Swal.fire({
+                title: "Error",
+                text: "Something went wrong. Please try again later.",
+                icon: "error",
+                confirmButtonText: "Okay"
+            });
+        });
+});
+
+
