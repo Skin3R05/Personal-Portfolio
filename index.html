@@ -118,50 +118,38 @@
     <section id="contact" class="section">
         <h2>Contact Me</h2>
 
-        <form class="contact-form" id="contact-form">
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+
+            <input type="hidden" name="access_key" value="b0a47f46-6dbd-4d47-8eca-a886e11b5e73">
+
             <div class="form-row">
                 <div>
                     <label for="name">Your Name</label>
-                    <input id="name" type="text" name="name" placeholder="Saba Matcharashvili" required>
+                    <input id="name" type="text" name="name" required>
                 </div>
 
                 <div>
                     <label for="email">Your Email</label>
-                    <input id="email" type="email" name="email" placeholder="saba@company.com" required>
+                    <input id="email" type="email" name="email" required>
                 </div>
             </div>
 
             <div>
                 <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                <textarea id="message" name="message" required></textarea>
             </div>
 
-            <div>
-                <button type="submit" class="btn">Send message</button>
-            </div>
+            <button type="submit" class="btn">Send message</button>
         </form>
+
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>© 2025 Saba Matcharashvili - All Rights reserved.</p>
     </footer>
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- EmailJS library -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-    <!-- Load your private keys (ignored on GitHub) -->
-    <script src="emailConfig.js"></script>
-
-    <!-- Initialize EmailJS correctly -->
-    <script>
-        emailjs.init({
-            publicKey: EMAILJS_PUBLIC_KEY
-        });
-    </script>
 
     <!-- Custom JS -->
     <script src="script.js"></script>
